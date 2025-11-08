@@ -56,8 +56,8 @@ export const MOCK_PROPERTY_DATA: Property = {
 export const INITIAL_REGION = {
   latitude: 37.7879,
   longitude: -122.4314,
-  latitudeDelta: 0.005, // Small delta for close zoom
-  longitudeDelta: 0.005,
+  latitudeDelta: 0.01, // Increased delta to show more area including neighbors
+  longitudeDelta: 0.01,
 };
 
 /**

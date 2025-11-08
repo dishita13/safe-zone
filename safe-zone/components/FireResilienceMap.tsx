@@ -55,9 +55,9 @@ export default function FireResilienceMap({ property, onParcelTap }: FireResilie
         <Circle
             center={{ latitude: INITIAL_REGION.latitude, longitude: INITIAL_REGION.longitude }}
             radius={8046.7} // ~5 miles in meters
-            strokeWidth={1}
-            strokeColor={'rgba(0, 0, 255, 0.5)'}
-            fillColor={'rgba(0, 0, 255, 0.05)'}
+            strokeWidth={2}
+            strokeColor={'rgba(0, 0, 255, 0.8)'}
+            fillColor={'rgba(0, 0, 255, 0.1)'}
         />
         
         {/* 3. Neighborhood Indicators (Simplified circles for neighbors) */}
@@ -65,9 +65,21 @@ export default function FireResilienceMap({ property, onParcelTap }: FireResilie
             <Circle
                 key={neighbor.id}
                 center={neighbor.center}
-                radius={20} // Tiny circle to represent a neighbor's parcel
+                radius={100} // Increased radius to make neighbors more visible
                 fillColor={getColorByScore(neighbor.completion)}
-                strokeColor="transparent"
+                strokeColor="#333"
+                strokeWidth={2}
+            />
+        ))}
+        
+        {/* 4. Add markers for neighbors to make them even more visible */}
+        {NEIGHBORHOOD_DATA.map(neighbor => (
+            <Marker
+                key={`marker-${neighbor.id}`}
+                coordinate={neighbor.center}
+                title={`Neighbor ${neighbor.id.split('-')[1].toUpperCase()}`}
+                description={`Resilience Score: ${neighbor.completion}/5`}
+                pinColor={neighbor.completion >= 4 ? "green" : neighbor.completion >= 2 ? "orange" : "red"}
             />
         ))}
       </MapView>
