@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "expo-location": "~19.0.7",
+    "react-native-webview": "^13.16.0"
+  },
+  "devDependencies": {
+    "@types/react": "~19.1.10",
+    "typescript": "~5.9.2"
+  }
+}

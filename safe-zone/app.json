@@ -26,6 +26,12 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
+      [
+        "expo-location", 
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow SafeWater to access your location to display nearby fire risk areas."
+        }
+      ], 
       "expo-router",
       [
         "expo-splash-screen",
