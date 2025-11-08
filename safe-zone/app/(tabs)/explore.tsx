@@ -5,9 +5,16 @@ import { ThemedView } from '@/components/themed-view';
 import ChecklistPanel from '@/components/ChecklistPanel';
 import { useProperty } from '@/contexts/PropertyContext';
 import { NEIGHBORHOOD_DATA } from '@/data/mockData';
+import FireResilienceMap from '@/components/FireResilienceMap';
+
 
 export default function ChecklistScreen() {
   const { property, toggleTask, userScore } = useProperty();
+
+  const handleParcelTap = (parcelId: string) => {
+    console.log('Tapped parcel:', parcelId);
+    // You can add logic here to show property details or navigate
+  };
   
   // Calculate average neighborhood score
   const neighborhoodScore = Math.round(
@@ -24,6 +31,11 @@ export default function ChecklistScreen() {
         toggleTask={toggleTask}
         neighborhoodScore={neighborhoodScore}
         userScore={userScore}
+      />
+      <FireResilienceMap 
+        property={property} 
+        onParcelTap={handleParcelTap}
+
       />
     </ThemedView>
   );
